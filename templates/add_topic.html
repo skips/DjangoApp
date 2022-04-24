@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Create topic{% endblock %}
+
+{% block content %}
+
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            background-color: rgba(253, 253, 253, 0.83);
+        }
+    </style>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-8 offset-2">
+          <h2 class=" my-5">Create a topic</h2>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+              {{ form.as_p }}
+
+            <button class="btn btn-success">Create topic</button>
+            <a href="{% url 'topics' %}" class="btn btn-danger">Cancel</a>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

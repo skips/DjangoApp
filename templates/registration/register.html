@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            background-color: rgba(253, 253, 253, 0.83);
+        }
+    </style>
+
+    <br/>
+    <h3>Register</h3>
+    <br/>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+        <p class="text-center">If you already have an account, <a href={% url 'login' %}>login</a> instead.</p>
+    </div>
+
+{% endblock %}
