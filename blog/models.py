@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -28,6 +29,7 @@ class Post(models.Model):
     text = models.TextField()
     name = models.CharField(max_length=255)
     likes_count = models.IntegerField(default=0)
+    beauty_content = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}-{self.id}"

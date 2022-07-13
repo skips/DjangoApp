@@ -19,6 +19,10 @@
             box-shadow: 0 16px 48px #E3E7EB;
             margin-top: 3%;
         }
+
+        .sign {
+            margin-left: 23.3%;
+        }
     </style>
 
             <div class="card col-lg-6 offset-lg-3 mb-3">
@@ -50,13 +54,17 @@
                     {% endfor %}
                 {% endif %}
                 <br/>
-                <form method="post" action="{% url 'add_comment' post_detail.id %}">
-                    {% csrf_token %}
-                    <div class="col-md-5">
-                        {{ form.as_p }}
-                    </div>
-                    <button class="btn btn-primary">Leave a comment</button>
-                </form>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'add_comment' post_detail.id %}">
+                        {% csrf_token %}
+                        <div class="col-md-5">
+                            {{ form.as_p }}
+                        </div>
+                        <button class="btn btn-primary">Leave a comment</button>
+                    </form>
+                {% else %}
+                    <p class="text sign"><a href={% url 'login' %}>Sign in</a> to leave a comment...</p>
+                {% endif %}
             </div>
 
 {% endblock %}

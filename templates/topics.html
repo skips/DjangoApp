@@ -39,11 +39,13 @@
         {% endfor %}
     </div>
 
-    <div class="layer2">
-        <form action='add_topic' method='GET'>
-          <p><button class="btn btn-primary ">Create topic</button></p>
-        </form>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="layer2">
+            <form action='add_topic' method='GET'>
+              <p><button class="btn btn-primary ">Create topic</button></p>
+            </form>
+        </div>
+    {% endif %}
 
     <div class="row">
         <nav class="col-lg-6 offset-lg-3 mt-4 d-flex justify-content-center">
